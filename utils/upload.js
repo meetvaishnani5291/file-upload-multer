@@ -11,11 +11,16 @@ const storage = multer.diskStorage({
 });
 const upload = multer({
   storage,
+  limits: { fileSize: 5 * 1000 * 1000 },
   fileFilter: (req, file, next) => {
-    if (file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
       next(null, true);
     } else {
-      return next(new Error("Only .png, .jpg and .jpeg format allowed!"));
+      return next(null, false);
     }
   },
 });
