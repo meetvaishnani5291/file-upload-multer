@@ -5,7 +5,7 @@ const path = require("path");
 
 require("dotenv").config();
 
-const upload = require("../file-upload-multer/utils/upload");
+const upload = require(path.join(__dirname, "utils", "upload.js"));
 
 const app = express();
 
